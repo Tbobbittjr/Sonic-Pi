@@ -1,7 +1,6 @@
+#bpm and stuff
 use_bpm 110
 use_synth :pluck
-with_fx :distortion do
-end
 
 #varibales
 a = 0.2
@@ -24,28 +23,26 @@ define :drumheavy do
 end
 
 define :hit_hat do
-  live_loop :hithat do
-    4.times do
-      sample :drum_snare_soft, amp: a
-      sleep 1
-      a = a + 0.1
-      
-    end
-    2.times do
-      sample :drum_snare_soft, amp: a
-      sleep 1
-      a = a + 0.1
-      
-    end
+  4.times do
     sample :drum_snare_soft, amp: a
     sleep 1
     a = a + 0.1
     
-    8.times do
-      sample :drum_snare_soft, amp: a
-      sleep 1
-      a = a + 0.1
-    end
+  end
+  2.times do
+    sample :drum_snare_soft, amp: a
+    sleep 1
+    a = a + 0.1
+    
+  end
+  sample :drum_snare_soft, amp: a
+  sleep 1
+  a = a + 0.1
+  
+  8.times do
+    sample :drum_snare_soft, amp: a
+    sleep 1
+    a = a + 0.1
   end
 end
 
@@ -78,11 +75,13 @@ sample quote
 
 sleep 8
 
-live_loop :GO do
-  #m1
-  beat1
-  #m2
-  beat2
+with_fx :compressor do
+  live_loop :GO do
+    #m1
+    beat1
+    #m2
+    beat2
+  end
 end
 sleep 12
 
