@@ -1,25 +1,24 @@
-#bpm and stuff
 use_bpm 110
-use_synth :pluck
+use_synth :piano
 
 #varibales
 a = 0.2
 a = a + 0.1
 quote = "C:/Users/tony_bobbitt/Downloads/yt5s.com - Friday - Stay off my grass (128 kbps).wav"
+tag = "C:/Users/tony_bobbitt/Downloads/1647887598yzf/1647887598yzf.wav"
 
+#define stuff
 define :drumheavy do
-  live_loop :drum do
-    sample :drum_heavy_kick
-    sleep 1
-    sample :drum_heavy_kick
-    sleep 1
-    sample :drum_heavy_kick
-    sleep 0.5
-    sample :drum_soft_kick
-    sleep 1.5
-    sample :drum_heavy_kick
-    sleep 1
-  end
+  sample :drum_heavy_kick
+  sleep 1
+  sample :drum_heavy_kick
+  sleep 1
+  sample :drum_heavy_kick
+  sleep 0.5
+  sample :drum_soft_kick
+  sleep 1.5
+  sample :drum_heavy_kick
+  sleep 1
 end
 
 define :hit_hat do
@@ -69,24 +68,47 @@ define :beat2 do
   sleep 0.75
 end
 
+#ptz functions
+define :pps do |n1,n2|
+  play n1
+  sleep 0.75
+  play n2
+end
+define :ppp do |n1,n2,n3|
+  play n1
+  sleep 0.5
+  play n1
+  sleep 0.5
+  play n1
+  sleep 0.5
+end
+
 #start of song
+sample :vinyl_hiss
 sample quote
 
 
 sleep 8
 
-with_fx :compressor do
-  live_loop :GO do
+
+live_loop :GO do
+  4.times do
     #m1
     beat1
     #m2
     beat2
   end
+  stop
 end
+
 sleep 12
 
 #drum heavy
-drumheavy
-
+live_loop :drum do
+  4.times do
+    drumheavy
+  end
+  stop
+end
 #hit hat
 hit_hat
