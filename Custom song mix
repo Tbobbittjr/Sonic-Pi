@@ -1,24 +1,30 @@
+#fx and stuff
 use_bpm 110
-use_synth :piano
+use_synth :blade
 
 #varibales
 a = 0.2
 a = a + 0.1
+b = 0.2
+b = b + 0.5
 quote = "C:/Users/tony_bobbitt/Downloads/yt5s.com - Friday - Stay off my grass (128 kbps).wav"
+tag = "C:/Users/tony_bobbitt/Downloads/yooooooooo.wav"
+metro = "C:/Users/tony_bobbitt/Downloads/metro.wav"
+weezy ="C:/Users/tony_bobbitt/Downloads/weezy.wav"
 
+
+#define stuff
 define :drumheavy do
-  18.times do
-    sample :drum_heavy_kick
-    sleep 1
-    sample :drum_heavy_kick
-    sleep 1
-    sample :drum_heavy_kick
-    sleep 0.5
-    sample :drum_soft_kick
-    sleep 1.5
-    sample :drum_heavy_kick
-    sleep 1
-  end
+  sample :drum_heavy_kick
+  sleep 1
+  sample :drum_heavy_kick
+  sleep 1
+  sample :drum_heavy_kick
+  sleep 0.5
+  sample :drum_soft_kick
+  sleep 1.5
+  sample :drum_heavy_kick
+  sleep 1
 end
 
 define :hit_hat do
@@ -68,72 +74,30 @@ define :beat2 do
   sleep 0.75
 end
 
+#ptz functions
+define :pps do |n1,n2|
+  play n1
+  sleep 0.75
+  play n2
+end
+define :ppp do |n1,n2,n3|
+  play n1
+  sleep 0.5
+  play n1
+  sleep 0.5
+  play n1
+  sleep 0.5
+end
+
 #start of song
+sample :vinyl_hiss
 sample quote
 
 
 sleep 8
 
-4.times do
-  #m1
-  beat1
-  #m2
-  beat2
-end
 
-sleep 0.1
-
-use_bpm 104
-use_synth :piano
-
-
-play :e5
-sleep 0.75
-play :e5
-sleep 0.75
-play :b5
-sleep 0.5
-play :c6
-sleep 0.5
-play :d6
-sleep 0.5
-play :c6
-
-sleep 4
-
-play :d6
-sleep 0.5
-play :c6
-sleep 0.5
-play :b5
-sleep 0.5
-play :a5
-
-sleep 0.5
-
-play :e5
-sleep 0.75
-play :e5
-sleep 0.75
-play :b5
-sleep 0.5
-play :c6
-sleep 0.5
-play :d6
-sleep 0.5
-play :c6
-
-sleep 1
-
-4.times do
-  play :e5
-  sleep 1
-end
-
-
-
-#drum heavy
-
-
-
-#hit hat
+live_loop :GO do
+  4.times do
+    #m1
+    beat1
