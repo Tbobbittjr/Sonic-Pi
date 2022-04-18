@@ -1,0 +1,121 @@
+tag = "C:/Users/tony_bobbitt/Downloads/yooooooooo.wav"
+metro = "C:/Users/tony_bobbitt/Downloads/metro.wav"
+weezy ="C:/Users/tony_bobbitt/Downloads/weezy.wav"
+
+define :pps do |n1,n2|
+  play n1
+  sleep 0.75
+  play n2
+end
+define :ppp do |n1,n2,n3|
+  play n1
+  sleep 0.5
+  play n1
+  sleep 0.5
+  play n1
+  sleep 0.5
+end
+define :ppp1 do
+  play :b5
+  sleep 0.5
+  play :c6
+  sleep 0.5
+  play :d6
+  sleep 0.5
+end
+
+b = 0.2
+b = b + 0.5
+
+use_bpm 110
+use_synth :blade
+
+2.times do
+  play :e5
+  sleep 2
+end
+
+4.times do
+  sample :drum_bass_soft
+  play :e5
+  sleep 1
+end
+
+live_loop :drum1 do
+  6.times do
+    sample :drum_cymbal_pedal, amp: b
+    sleep 1
+    b = b + 0.5
+  end
+  stop
+end
+
+live_loop :rewind do
+  1.times do
+    sleep 6
+    sample :vinyl_rewind, amp: 0.2
+  end
+  stop
+end
+
+live_loop :play2 do
+  3.times do
+    pps :e5,:e5
+    sleep 0.75
+    ppp :b5,:c6,:d6
+    play :c6, sustain: 3
+    
+    sleep 3.5
+    
+    play :d6
+    sleep 0.5
+    play :c6
+    sample weezy, amp: 2.5
+    sleep 0.5
+    play :b5
+    sleep 0.5
+    play :a5
+    
+    sleep 0.5
+    
+    play :e5
+    sample :drum_snare_hard, amp: 0.5
+    sleep 0.75
+    play :e5
+    sample :drum_snare_hard, amp: 0.5
+    sleep 0.75
+    ppp :b5,:c6,:d6
+    play :c6
+    
+    sleep 1
+    
+    4.times do
+      sample :drum_bass_soft
+      play :e5
+      sleep 1
+    end
+  end
+  stop
+end
+
+sleep 12.50
+sample :drum_splash_soft, amp: 2
+
+live_loop :drum2 do
+  8.times do
+    sample :drum_cymbal_pedal
+    sleep 1
+  end
+  stop
+end
+
+
+sleep 36
+sample metro, amp: 2
+sample :vinyl_backspin
+
+sleep 3
+
+with_fx :echo do
+  sample weezy, amp: 3
+end
